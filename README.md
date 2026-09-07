@@ -3,7 +3,7 @@
 ## Descrição: 
 
 Um projeto de console C# para gerenciar fluxo de tarefas, tendo como objetivo o controle de tarefas e rastreamento da evolução ao longo do tempo, por exemplo: 
-cadastrar, listar, buscar, concluir e remover tarefas por meio de menu interativo.
+cadastrar, listar, buscar, concluir e remover tarefas por meio de um menu interativo.
 
 ## Tecnologias:
 
