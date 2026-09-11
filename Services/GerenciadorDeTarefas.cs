@@ -16,4 +16,21 @@ public class GerenciadorDeTarefas
         tarefas.Add(tarefa);
         return $"Tarefa: {tarefa.Titulo} adicionada com sucesso na lista de tarefas!";
     }
+
+    public void ListarTarefas()
+    {
+
+        if(tarefas.Count > 0)
+        {
+            for(int i = 0; i < tarefas.Count; i++)
+            {
+                Console.WriteLine(tarefas[i]);
+            }
+        }
+        else
+        {
+            Console.WriteLine("Não há tarefas na lista!");
+            return;
+        }
+    }
 }
