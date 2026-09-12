@@ -47,4 +47,21 @@ public class GerenciadorDeTarefas
         return null;
     }
 
+    public Tarefa? ConcluirTarefaPorId(int id)
+    {
+        for(int i = 0; i < tarefas.Count; i++)
+        {
+            if(tarefas[i].Id == id)
+            {
+                Console.WriteLine(tarefas[i].ConcluirTarefa());
+                return tarefas[i];
+            }
+        }
+
+
+        return null;
+    }
+
+
+
 }

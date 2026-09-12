@@ -62,6 +62,25 @@ else
     Console.WriteLine("Tarefa não encontrada!");
 }
 
+// Teste do método ConcluirTarefaPorId() <- Tentativa de concluir uma tarefa e tentar concluir novamente
+
+Tarefa? outputTarefa2 = gerenciadorDeTarefas.ConcluirTarefaPorId(2);
+
+if(outputTarefa2 != null)
+{
+    Console.WriteLine(outputTarefa2);
+}
+else
+{
+    Console.WriteLine("Tarefa não encontrada!");
+}
+
+outputTarefa2 = gerenciadorDeTarefas.ConcluirTarefaPorId(2);
+
+
+
+
+
 
 
 
