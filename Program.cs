@@ -37,6 +37,32 @@ Console.WriteLine("------LISTAGEM TAREFAS------------");
 
 gerenciadorDeTarefas.ListarTarefas();
 
+// Teste do método BuscarTarefaPorId() <- Tentativa de retornar a tarefa, com id inexistente e existente.
+
+Tarefa? outputTarefa = gerenciadorDeTarefas.BuscarTarefaPorId(3);
+
+if(outputTarefa != null)
+{
+    Console.WriteLine(outputTarefa);
+}
+else
+{
+    Console.WriteLine("Tarefa não encontrada!");
+}
+
+
+Tarefa? outputTarefa1 = gerenciadorDeTarefas.BuscarTarefaPorId(2);
+
+if(outputTarefa1 != null)
+{
+    Console.WriteLine(outputTarefa1);
+}
+else
+{
+    Console.WriteLine("Tarefa não encontrada!");
+}
+
+
 
 
 

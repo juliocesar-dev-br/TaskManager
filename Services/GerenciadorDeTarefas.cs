@@ -33,4 +33,18 @@ public class GerenciadorDeTarefas
             return;
         }
     }
+
+    public Tarefa? BuscarTarefaPorId(int id)
+    {
+        for(int i = 0; i < tarefas.Count; i++)
+        {
+            if(tarefas[i].Id == id)
+            {
+                return tarefas[i];
+            }
+        }
+
+        return null;
+    }
+
 }
