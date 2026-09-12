@@ -76,5 +76,15 @@ public class GerenciadorDeTarefas
         return "Id inexistente!";
     }
 
+    public void ExibirMenu()
+    {
+        Console.WriteLine("1 - Adicionar tarefa");
+        Console.WriteLine("2 - Conclúir tarefa");
+        Console.WriteLine("3 - Remover tarefa");
+        Console.WriteLine("4 - Listar tarefas");
+        Console.WriteLine("5 - Buscar tarefa");
+        Console.WriteLine("6 - Sair");
+    }
+
 
 }
