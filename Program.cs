@@ -77,6 +77,12 @@ else
 
 outputTarefa2 = gerenciadorDeTarefas.ConcluirTarefaPorId(2);
 
+// Teste do método RemoverTarefaPorId() <- Tentativa de remover uma tarefa(casos de erro: id inexistente)
+
+Console.WriteLine(gerenciadorDeTarefas.RemoverTarefaPorId(1));
+Console.WriteLine("------LISTAGEM TAREFAS------------");
+gerenciadorDeTarefas.ListarTarefas();
+
 
 
 

@@ -62,6 +62,19 @@ public class GerenciadorDeTarefas
         return null;
     }
 
+    public string RemoverTarefaPorId(int id)
+    {
+        for(int i = 0; i < tarefas.Count; i++)
+        {
+            if(tarefas[i].Id == id)
+            {
+                tarefas.Remove(tarefas[i]);
+                return $"Tarefa {id} foi removida com sucesso!";
+            }
+        }
+
+        return "Id inexistente!";
+    }
 
 
 }
