@@ -1,4 +1,6 @@
-﻿GerenciadorDeTarefas gerenciadorDeTarefas = new GerenciadorDeTarefas();
+﻿
+/* Seguro contra alterações no projeto(excluir quando o menu estiver pronto)
+GerenciadorDeTarefas gerenciadorDeTarefas = new GerenciadorDeTarefas();
 Tarefa tarefaTeste = new(1, "Alistamento no exercito", "Fazer o alistamento obrigatório no exercito pois eu acabei de completar 18 anos.");
 
 // Teste: concluir a tarefa e tentar concluir novamente
@@ -82,9 +84,87 @@ outputTarefa2 = gerenciadorDeTarefas.ConcluirTarefaPorId(2);
 Console.WriteLine(gerenciadorDeTarefas.RemoverTarefaPorId(1));
 Console.WriteLine("------LISTAGEM TAREFAS------------");
 gerenciadorDeTarefas.ListarTarefas();
+*/
+
+
+using System.Security.AccessControl;
+
+int ValidarInteiro(string frase)
+{
+    
+    while(true)
+    {
+        Console.Write(frase);
+
+        if(int.TryParse(Console.ReadLine(), out int result) && result > 0)
+        {
+            return result;
+        }
+
+        Console.WriteLine("O número precisa ser maior que zero");
+    }  
+}
 
 
 
+string StringValida(string frase)
+{
+
+    while(true)
+    {
+        Console.Write(frase);
+        string caracteristica = Console.ReadLine();
+
+        caracteristica = caracteristica.Trim();
+
+        if(!string.IsNullOrEmpty(caracteristica))
+        {
+            return caracteristica;
+        }
+
+        Console.WriteLine("A string não poder ser nula ou vazia!");
+    }
+
+    
+}
+
+GerenciadorDeTarefas gerenciadorDeTarefas = new GerenciadorDeTarefas();
+
+while(true)
+{
+    
+   gerenciadorDeTarefas.ExibirMenu();
+
+   Console.WriteLine("--------------------------------------");
+   int? opcaoConvertida = ValidarInteiro("Digite a opção que deseja: ");
+   
+    switch(opcaoConvertida)
+    {
+        case 1:
+            
+            int id = ValidarInteiro("Id: ");
+            string titulo = StringValida("Titulo: ");
+            string descricao = StringValida("Descrição: ");
+
+            Tarefa tarefa = new Tarefa(id, titulo, descricao);
+
+            gerenciadorDeTarefas.AdicionarTarefa(tarefa);
+            Console.WriteLine("Tarefa registrada com sucesso!");
+            return;
+        case 2:
+            
+        default:
+            break;
+
+
+            
+    }
+
+  
+
+
+
+}
 
 
 
