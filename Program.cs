@@ -1,93 +1,4 @@
-﻿
-/* Seguro contra alterações no projeto(excluir quando o menu estiver pronto)
-GerenciadorDeTarefas gerenciadorDeTarefas = new GerenciadorDeTarefas();
-Tarefa tarefaTeste = new(1, "Alistamento no exercito", "Fazer o alistamento obrigatório no exercito pois eu acabei de completar 18 anos.");
-
-// Teste: concluir a tarefa e tentar concluir novamente
-
-Console.WriteLine(tarefaTeste);
-
-Console.WriteLine(tarefaTeste.ConcluirTarefa());
-
-Console.WriteLine(tarefaTeste);
-
-Console.WriteLine(tarefaTeste.ConcluirTarefa());
-
-Console.WriteLine("-----------------------------------------------------");
-
-// Teste do método AdicionarTarefa()
-
-Tarefa tarefaTeste1 = new(1, "Alistamento no exercito", "Fazer o alistamento obrigatório no exercito pois eu acabei de completar 18 anos.");
-
-Console.WriteLine(gerenciadorDeTarefas.AdicionarTarefa(tarefaTeste1));
-
-System.Console.WriteLine("-----------------------------------------------------");
-
-// Teste do método AdicionarTarefa() <- Tentativa de adicionar um Id repetido
-
-Console.WriteLine(gerenciadorDeTarefas.AdicionarTarefa(tarefaTeste));
-
-
-System.Console.WriteLine("-----------------------------------------------------");
-
-// Teste do método ListarTarefas() <- Tentativa de listar as tarefas
-
-Tarefa tarefaTeste2 = new(2, "Reformar quarto", "Por conta do som externo que interfere nos meus estudos, tenho que adicionar uma espuma absorvedora de som");
-Console.WriteLine(gerenciadorDeTarefas.AdicionarTarefa(tarefaTeste2));
-
-Console.WriteLine("------LISTAGEM TAREFAS------------");
-
-gerenciadorDeTarefas.ListarTarefas();
-
-// Teste do método BuscarTarefaPorId() <- Tentativa de retornar a tarefa, com id inexistente e existente.
-
-Tarefa? outputTarefa = gerenciadorDeTarefas.BuscarTarefaPorId(3);
-
-if(outputTarefa != null)
-{
-    Console.WriteLine(outputTarefa);
-}
-else
-{
-    Console.WriteLine("Tarefa não encontrada!");
-}
-
-
-Tarefa? outputTarefa1 = gerenciadorDeTarefas.BuscarTarefaPorId(2);
-
-if(outputTarefa1 != null)
-{
-    Console.WriteLine(outputTarefa1);
-}
-else
-{
-    Console.WriteLine("Tarefa não encontrada!");
-}
-
-// Teste do método ConcluirTarefaPorId() <- Tentativa de concluir uma tarefa e tentar concluir novamente
-
-Tarefa? outputTarefa2 = gerenciadorDeTarefas.ConcluirTarefaPorId(2);
-
-if(outputTarefa2 != null)
-{
-    Console.WriteLine(outputTarefa2);
-}
-else
-{
-    Console.WriteLine("Tarefa não encontrada!");
-}
-
-outputTarefa2 = gerenciadorDeTarefas.ConcluirTarefaPorId(2);
-
-// Teste do método RemoverTarefaPorId() <- Tentativa de remover uma tarefa(casos de erro: id inexistente)
-
-Console.WriteLine(gerenciadorDeTarefas.RemoverTarefaPorId(1));
-Console.WriteLine("------LISTAGEM TAREFAS------------");
-gerenciadorDeTarefas.ListarTarefas();
-*/
-
-
-using System.Security.AccessControl;
+﻿using System.Security.AccessControl;
 
 GerenciadorDeTarefas gerenciadorDeTarefas = new GerenciadorDeTarefas();
 
@@ -134,11 +45,8 @@ bool AlistaEstaVazia()
     
 }
 
-
-
 while(true)
 {
-    
    gerenciadorDeTarefas.ExibirMenu();
 
    Console.WriteLine("--------------------------------------");
@@ -147,7 +55,13 @@ while(true)
     switch(opcaoConvertida)
     {
         case 1:
-            
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("╔══════════════════════════════════════╗");
+            Console.WriteLine("║          ➕ ADD TASK                 ║");
+            Console.WriteLine("╚══════════════════════════════════════╝");
+
+
             int id = ValidarInteiro("Id: ");
             string titulo = StringValida("Titulo: ");
             string descricao = StringValida("Descrição: ");
@@ -155,9 +69,16 @@ while(true)
             Tarefa tarefa = new Tarefa(id, titulo, descricao);
 
             gerenciadorDeTarefas.AdicionarTarefa(tarefa);
-            Console.WriteLine("Tarefa registrada com sucesso!");
+            Console.WriteLine("​​✅​ Tarefa registrada com sucesso!");
             break;
         case 2:
+
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("╔═══════════════════════════════════════════╗");
+            Console.WriteLine("║          ✅ COMPLETE TASK                 ║");
+            Console.WriteLine("╚═══════════════════════════════════════════╝");
+
             if(AlistaEstaVazia())
             {
                 Console.WriteLine("Lista de tarefas vazia!");
@@ -165,13 +86,21 @@ while(true)
             }
 
             gerenciadorDeTarefas.ListarTarefas();
-            Console.WriteLine("=====================================================");
 
-            int id1 = ValidarInteiro("Digite o id da tarefa que deseja concluir: ");
-
+            Console.WriteLine("_______________________________________________");
+            int id1 = ValidarInteiro("ID: ");
+            Console.WriteLine("_______________________________________________");
+            
+            Console.Clear();
             gerenciadorDeTarefas.ConcluirTarefaPorId(id1);
             break;
         case 3:
+
+            Console.Clear();
+            Console.WriteLine("╔═══════════════════════════════════════════╗");
+            Console.WriteLine("║          ​​❌​ REMOVE TASK                   ║");
+            Console.WriteLine("╚═══════════════════════════════════════════╝");
+
             if(AlistaEstaVazia())
             {
                 Console.WriteLine("Lista de tarefas vazia!");
@@ -179,16 +108,32 @@ while(true)
             }
 
             gerenciadorDeTarefas.ListarTarefas();
-            Console.WriteLine("=====================================================");
 
-            int id2 = ValidarInteiro("Digite o id da tarefa que deseja remover: ");
+            Console.WriteLine("_______________________________________________");
+            int id2 = ValidarInteiro("ID: ");
+            Console.WriteLine("_______________________________________________");
 
-            gerenciadorDeTarefas.RemoverTarefaPorId(id2);
+            Console.Clear();
+            Console.WriteLine(gerenciadorDeTarefas.RemoverTarefaPorId(id2));
             break;
         case 4:
+
+            Console.Clear();
+            Console.WriteLine("╔═══════════════════════════════════════════╗");
+            Console.WriteLine("║          ​​📋 SHOW TASKS                    ║");
+            Console.WriteLine("╚═══════════════════════════════════════════╝");
+
             gerenciadorDeTarefas.ListarTarefas();
+            Console.WriteLine("_______________________________________________");
             break;
         case 5:
+
+            Console.Clear();
+            Console.WriteLine("╔═══════════════════════════════════════════╗");
+            Console.WriteLine("║          ​​🔎 SEARCH TASKS                  ║");
+            Console.WriteLine("╚═══════════════════════════════════════════╝");
+
+
             if(AlistaEstaVazia())
             {
                 Console.WriteLine("Lista de tarefas vazia!");
@@ -196,24 +141,21 @@ while(true)
             }
 
             gerenciadorDeTarefas.ListarTarefas();
-            Console.WriteLine("=====================================================");
 
-            int id3 = ValidarInteiro("Digite o id da tarefa que deseja buscar: ");
+            Console.WriteLine("_______________________________________________");
+            int id3 = ValidarInteiro("ID: ");
+            Console.WriteLine("_______________________________________________");
+
+            Console.Clear();
             Console.WriteLine(gerenciadorDeTarefas.BuscarTarefaPorId(id3));
             break;
         case 6:
+            Console.Clear();
+            Console.WriteLine("ADEUS!");
             return;
         default:
-            break;
-
-
-            
+            break;  
     }
-
-  
-
-
-
 }
 
 

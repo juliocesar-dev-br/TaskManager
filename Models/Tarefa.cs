@@ -27,7 +27,7 @@ public class Tarefa
         }
        
         estaConcluida = true;
-        return $"A tarefa: {Titulo} foi conclúida com sucesso!";
+        return $"​​✅​ A tarefa: {Titulo} foi conclúida com sucesso !";
     }
 
 

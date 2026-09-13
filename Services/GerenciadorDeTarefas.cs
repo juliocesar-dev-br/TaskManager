@@ -70,7 +70,7 @@ public class GerenciadorDeTarefas
             if(tarefas[i].Id == id)
             {
                 tarefas.Remove(tarefas[i]);
-                return $"Tarefa {id} foi removida com sucesso!";
+                return $"​​❌​ Tarefa {id} foi removida com sucesso!";
             }
         }
 
@@ -79,12 +79,18 @@ public class GerenciadorDeTarefas
 
     public void ExibirMenu()
     {
-        Console.WriteLine("1 - Adicionar tarefa");
-        Console.WriteLine("2 - Conclúir tarefa");
-        Console.WriteLine("3 - Remover tarefa");
-        Console.WriteLine("4 - Listar tarefas");
-        Console.WriteLine("5 - Buscar tarefa");
-        Console.WriteLine("6 - Sair");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine("╔══════════════════════════════════════╗");
+        Console.WriteLine("║          📋 TASK MANAGER             ║");
+        Console.WriteLine("╚══════════════════════════════════════╝");
+
+
+        Console.WriteLine("1️⃣​ - Adicionar tarefa");
+        Console.WriteLine("2️⃣ - Conclúir tarefa");
+        Console.WriteLine("3️⃣​ - Remover tarefa");
+        Console.WriteLine("​4️⃣​ - Listar tarefas");
+        Console.WriteLine("​5️⃣​ - Buscar tarefa");
+        Console.WriteLine("​6️⃣​ - Sair");
     }
 
 
