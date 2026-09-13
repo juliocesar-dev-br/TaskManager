@@ -1,6 +1,6 @@
 public class GerenciadorDeTarefas
 {
-    private List<Tarefa> tarefas {get; set;} = new();
+    public List<Tarefa> tarefas {get; private set;} = new();
 
 
     public string AdicionarTarefa(Tarefa tarefa)
@@ -49,6 +49,7 @@ public class GerenciadorDeTarefas
 
     public Tarefa? ConcluirTarefaPorId(int id)
     {
+        
         for(int i = 0; i < tarefas.Count; i++)
         {
             if(tarefas[i].Id == id)
@@ -57,7 +58,7 @@ public class GerenciadorDeTarefas
                 return tarefas[i];
             }
         }
-
+        
 
         return null;
     }

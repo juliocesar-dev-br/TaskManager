@@ -150,9 +150,43 @@ while(true)
 
             gerenciadorDeTarefas.AdicionarTarefa(tarefa);
             Console.WriteLine("Tarefa registrada com sucesso!");
-            return;
+            break;
         case 2:
-            
+
+            if(gerenciadorDeTarefas.tarefas.Count <= 0)
+            {
+                Console.WriteLine("Lista de tarefas vazia!");
+                break;
+            }
+
+            gerenciadorDeTarefas.ListarTarefas();
+            Console.WriteLine("=====================================================");
+
+            int id1 = ValidarInteiro("Digite o id da tarefa que deseja concluir: ");
+
+            gerenciadorDeTarefas.ConcluirTarefaPorId(id1);
+            break;
+        case 3:
+            if(gerenciadorDeTarefas.tarefas.Count <= 0)
+            {
+                Console.WriteLine("Lista de tarefas vazia!");
+                break;
+            }
+
+            gerenciadorDeTarefas.ListarTarefas();
+            Console.WriteLine("=====================================================");
+
+            int id2 = ValidarInteiro("Digite o id da tarefa que deseja remover: ");
+
+            gerenciadorDeTarefas.RemoverTarefaPorId(id2);
+            break;
+        case 4:
+            gerenciadorDeTarefas.ListarTarefas();
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
         default:
             break;
 
