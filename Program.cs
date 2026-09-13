@@ -89,6 +89,8 @@ gerenciadorDeTarefas.ListarTarefas();
 
 using System.Security.AccessControl;
 
+GerenciadorDeTarefas gerenciadorDeTarefas = new GerenciadorDeTarefas();
+
 int ValidarInteiro(string frase)
 {
     
@@ -104,8 +106,6 @@ int ValidarInteiro(string frase)
         Console.WriteLine("O número precisa ser maior que zero");
     }  
 }
-
-
 
 string StringValida(string frase)
 {
@@ -128,7 +128,13 @@ string StringValida(string frase)
     
 }
 
-GerenciadorDeTarefas gerenciadorDeTarefas = new GerenciadorDeTarefas();
+bool AlistaEstaVazia()
+{
+    return gerenciadorDeTarefas.tarefas.Count <= 0;
+    
+}
+
+
 
 while(true)
 {
@@ -152,8 +158,7 @@ while(true)
             Console.WriteLine("Tarefa registrada com sucesso!");
             break;
         case 2:
-
-            if(gerenciadorDeTarefas.tarefas.Count <= 0)
+            if(AlistaEstaVazia())
             {
                 Console.WriteLine("Lista de tarefas vazia!");
                 break;
@@ -167,7 +172,7 @@ while(true)
             gerenciadorDeTarefas.ConcluirTarefaPorId(id1);
             break;
         case 3:
-            if(gerenciadorDeTarefas.tarefas.Count <= 0)
+            if(AlistaEstaVazia())
             {
                 Console.WriteLine("Lista de tarefas vazia!");
                 break;
@@ -184,9 +189,20 @@ while(true)
             gerenciadorDeTarefas.ListarTarefas();
             break;
         case 5:
+            if(AlistaEstaVazia())
+            {
+                Console.WriteLine("Lista de tarefas vazia!");
+                break;
+            }
+
+            gerenciadorDeTarefas.ListarTarefas();
+            Console.WriteLine("=====================================================");
+
+            int id3 = ValidarInteiro("Digite o id da tarefa que deseja buscar: ");
+            Console.WriteLine(gerenciadorDeTarefas.BuscarTarefaPorId(id3));
             break;
         case 6:
-            break;
+            return;
         default:
             break;
 
