@@ -3,18 +3,18 @@ public class GerenciadorDeTarefas
     public List<Tarefa> tarefas {get; private set;} = new();
 
 
-    public string AdicionarTarefa(Tarefa tarefa)
+    public Tarefa? AdicionarTarefa(Tarefa tarefa)
     {
         for(int i = 0; i < tarefas.Count; i++)
         {
             if(tarefas[i].Id == tarefa.Id)
             {
-                return "Erro! Tarefas com Ids repetidos não pode ser inserido na lista!";
+                return null;
             }
         }
 
         tarefas.Add(tarefa);
-        return $"Tarefa: {tarefa.Titulo} adicionada com sucesso na lista de tarefas!";
+        return tarefa;
     }
 
     public void ListarTarefas()
@@ -63,6 +63,22 @@ public class GerenciadorDeTarefas
         return null;
     }
 
+
+    public Tarefa? AtualizarTarefa(int id, Tarefa tarefa)
+    {
+        for(int i = 0; i < tarefas.Count; i++)
+        {
+            if(id == tarefas[i].Id)
+            {
+                tarefas[i].Titulo = tarefa.Titulo;
+                tarefas[i].Descricao = tarefa.Descricao;
+                return tarefas[i];
+            }
+        }
+
+
+        return null;
+    }
     public string RemoverTarefaPorId(int id)
     {
         for(int i = 0; i < tarefas.Count; i++)
