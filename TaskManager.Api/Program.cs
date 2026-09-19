@@ -42,7 +42,6 @@ app.MapGet("/tarefas/{id}", (int id) =>
     return Results.Ok();
 });
 
-
 app.MapPost("/tarefas", (Tarefa tarefa) =>
 {
     if(tarefa == null)
@@ -63,7 +62,6 @@ app.MapPost("/tarefas", (Tarefa tarefa) =>
 
 });
 
-
 app.MapPut("/tarefas/{id}", (int id, Tarefa tarefa) =>
 {
     var resultado = gerenciadorDeTarefas.AtualizarTarefa(id, tarefa);
@@ -74,6 +72,19 @@ app.MapPut("/tarefas/{id}", (int id, Tarefa tarefa) =>
     }
 
     return Results.Ok(resultado);
+
+});
+
+app.MapDelete("/tarefas/{id}", (int id) =>
+{
+    var resultado = gerenciadorDeTarefas.RemoverTarefaPorId(id);
+
+    if(resultado == "Id inexistente!")
+    {
+        return Results.NotFound();
+    }
+
+    return Results.NoContent();
 
 });
 
