@@ -85,7 +85,7 @@ public class GerenciadorDeTarefas
         {
             if(tarefas[i].Id == id)
             {
-                tarefas.Remove(tarefas[i]);
+                tarefas.RemoveAt(i);
                 return $"​​❌​ Tarefa {id} foi removida com sucesso!";
             }
         }
