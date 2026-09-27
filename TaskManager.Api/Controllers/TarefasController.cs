@@ -5,22 +5,26 @@ using Microsoft.AspNetCore.Mvc;
 public class TarefasController : ControllerBase
 {
     private readonly GerenciadorDeTarefas gerenciadorDeTarefas;
+    private readonly TarefaService tarefaService;
 
-    public TarefasController(GerenciadorDeTarefas gerenciadorDeTarefas)
+    public TarefasController(GerenciadorDeTarefas gerenciadorDeTarefas, TarefaService tarefaService)
     {
         this.gerenciadorDeTarefas = gerenciadorDeTarefas;
+        this.tarefaService = tarefaService;
     }
 
     [HttpGet]
-    public IActionResult ListarTarefas()
+    public async Task<IActionResult> ListarTarefas()
     {
-        return Ok(gerenciadorDeTarefas.tarefas);
+        var tarefas = await tarefaService.ObterTarefas();
+
+        return Ok(tarefas);
     }
     
     [HttpGet("{id}")]
-    public IActionResult BuscarTarefa(int id)
+    public async Task<IActionResult> BuscarTarefa(int id)
     {
-        var tarefa = gerenciadorDeTarefas.BuscarTarefaPorId(id);
+        var tarefa = await tarefaService.BuscarTarefaPorId(id);
 
         if(tarefa == null)
         {
@@ -31,9 +35,9 @@ public class TarefasController : ControllerBase
     }
    
     [HttpPost]
-    public IActionResult AdicionarTarefa(Tarefa tarefa)
+    public async Task<IActionResult> AdicionarTarefa(Tarefa tarefa)
     {
-        var resultado = gerenciadorDeTarefas.AdicionarTarefa(tarefa);
+        var resultado = await tarefaService.AdicionarTarefa(tarefa);
 
         if(resultado == null)
         {
@@ -44,9 +48,9 @@ public class TarefasController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public IActionResult AtualizarTarefa(int id, Tarefa tarefa)
+    public async Task<IActionResult> AtualizarTarefa(int id, Tarefa tarefa)
     {
-        var resultado = gerenciadorDeTarefas.AtualizarTarefa(id, tarefa);
+        var resultado = await tarefaService.AtualizarTarefa(id, tarefa);
 
         if(resultado == null)
         {
@@ -57,11 +61,11 @@ public class TarefasController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IActionResult RemoverTarefa(int id)
+    public async Task<IActionResult> RemoverTarefa(int id)
     {
-        var resultado = gerenciadorDeTarefas.RemoverTarefaPorId(id);
+        var resultado = await tarefaService.RemoverTarefa(id);
 
-        if(resultado == "Id inexistente!")
+        if(resultado == null)
         {
             return NotFound();
         }

@@ -41,7 +41,7 @@ string StringValida(string frase)
 
 bool AlistaEstaVazia()
 {
-    return gerenciadorDeTarefas.tarefas.Count <= 0;
+    return !gerenciadorDeTarefas.PossuiTarefas();
     
 }
 

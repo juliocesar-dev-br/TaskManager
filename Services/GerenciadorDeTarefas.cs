@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
 public class GerenciadorDeTarefas
 {
-    public List<Tarefa> tarefas {get; private set;} = new();
+    private readonly List<Tarefa> tarefas  = new();
+    private readonly TaskManagerContext? context;
 
+    public GerenciadorDeTarefas(TaskManagerContext? context = null)
+    {
+        this.context = context;
+    }
 
     public Tarefa? AdicionarTarefa(Tarefa tarefa)
     {
@@ -17,6 +23,10 @@ public class GerenciadorDeTarefas
         return tarefa;
     }
 
+    public bool PossuiTarefas()
+    {
+        return tarefas.Count > 0;
+    }
     public void ListarTarefas()
     {
 
@@ -34,6 +44,10 @@ public class GerenciadorDeTarefas
         }
     }
 
+    public async Task<List<Tarefa>> ObterTarefas()
+    {
+        return await context.Tarefas.ToListAsync();
+    }
     public Tarefa? BuscarTarefaPorId(int id)
     {
         for(int i = 0; i < tarefas.Count; i++)
@@ -62,7 +76,6 @@ public class GerenciadorDeTarefas
 
         return null;
     }
-
 
     public Tarefa? AtualizarTarefa(int id, Tarefa tarefa)
     {
