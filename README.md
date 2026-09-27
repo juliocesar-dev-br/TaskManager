@@ -1,27 +1,56 @@
-# TaskManager (Gerenciamento de Tarefas)
+# TaskManager — Gerenciamento de Tarefas
 
-## Descrição: 
+## Descrição
 
-Um projeto de console C# para gerenciar fluxo de tarefas, tendo como objetivo o controle de tarefas e rastreamento da evolução ao longo do tempo, por exemplo: 
-cadastrar, listar, buscar, concluir e remover tarefas por meio de um menu interativo.
+API REST para gerenciamento de tarefas desenvolvida durante meus estudos de Back-end com C# e .NET.
 
-## Tecnologias:
+## Tecnologias
 
-- C#
-- .NET
+* C#
+* ASP.NET Core
+* Entity Framework Core
+* PostgreSQL
+* Postman
+* Git/GitHub
+* Docker
 
+## Arquitetura
 
-## Funcionalidades Planejadas:
-
-- Cadastrar tarefa
-- Listar tarefas
-- Buscar por ID
-- Marcar como concluída
-- Remover tarefa
-- Sair
-
-# Como executar:
-
-```bash
-    dotnet run
+```text
+HTTP Request
+     ↓
+Controller
+     ↓
+Service
+     ↓
+DbContext
+     ↓
+Entity Framework Core
+     ↓
+PostgreSQL
 ```
+
+## Endpoints
+
+```text
+POST   /tarefas
+GET    /tarefas
+GET    /tarefas/{id}
+PUT    /tarefas/{id}
+DELETE /tarefas/{id}
+```
+
+## O que já foi implementado
+
+* ✅ Criar tarefa
+* ✅ Listar tarefas
+* ✅ Buscar tarefa por ID
+* ✅ Atualizar tarefa
+* ✅ Remover tarefa
+* ✅ Persistência com PostgreSQL
+* ✅ Entity Framework Core
+* ✅ Migrations
+
+## Status
+
+**Em desenvolvimento.**
