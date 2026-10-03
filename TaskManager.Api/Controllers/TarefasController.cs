@@ -60,6 +60,21 @@ public class TarefasController : ControllerBase
         return Ok(resultado);
     }
 
+    [HttpPut("{id}/Concluir")]
+    public async Task<ActionResult> ConcluirTarefa(int id)
+    {
+        var resultado = await tarefaService.ConcluirTarefa(id);
+
+        if(resultado == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(resultado);
+    }
+
+
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> RemoverTarefa(int id)
     {

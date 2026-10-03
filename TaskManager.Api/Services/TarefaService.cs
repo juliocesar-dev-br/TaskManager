@@ -36,9 +36,9 @@ public class TarefaService
             return null;
         }
 
-        context.Tarefas.Add(tarefa); // Entidade sendo inserida
+        context.Tarefas.Add(tarefa); // Entidade sendo rastreada
         await context.SaveChangesAsync(); // Enviar alteração para o banco
-        return tarefa; // Retornar
+        return tarefa; // Retornar tarefa
 
     }
 
@@ -71,4 +71,19 @@ public class TarefaService
         await context.SaveChangesAsync();
         return tarefaExistente;
     }
+
+    public async Task<Tarefa?> ConcluirTarefa(int id)
+    {
+        var tarefaExistente = await context.Tarefas.FirstOrDefaultAsync(tarefa => tarefa.Id == id);
+
+        if(tarefaExistente == null)
+        {
+            return null;
+        }
+
+        tarefaExistente.ConcluirTarefa();
+        await context.SaveChangesAsync();
+        return tarefaExistente;
+    }
+
 }
